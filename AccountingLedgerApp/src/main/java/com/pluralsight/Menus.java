@@ -77,7 +77,7 @@ static Scanner read = new Scanner(System.in);
                         System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
                         TimeUnit.MILLISECONDS.sleep(200);
                     }
-                    // Call method to access ledger
+                    ledgerMenu();
                     break;
                 case 4:
                     System.out.println("Exiting the program...");
@@ -91,4 +91,8 @@ static Scanner read = new Scanner(System.in);
         }
 
     }
+
+    public static void ledgerMenu() {
+        // Placeholder for ledger menu functionality
+    };
 }
