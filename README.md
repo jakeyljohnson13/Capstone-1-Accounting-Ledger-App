@@ -2,10 +2,10 @@
 
 
 ## 🌏 Table of Contents:
-- [📜 Description] #description
-- [🫂 User Story] #userstory
-- [📸 Images] #images
-- [👨🏽‍💻 Code Highlight] #codehighlight
+- [📜 Description] (#description)
+- [🫂 User Story] (#userstory)
+- [📸 Images] (#images)
+- [👨🏽‍💻 Code Highlight] (#codehighlight)
 
 ## 📜 Description:
 
