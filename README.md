@@ -30,6 +30,7 @@
 - [Installation](#installation)
 - [Images](#images)
 - [Code Highlight](#code-highlight)
+- [License](#license)
 
 ## Description:
 
@@ -37,11 +38,13 @@
 
 ## Installation:
 
-* `git clone git@github.com:chandraucb/payitforward.git`
+* `git clone https://github.com/Gagucci/Capstone-1-Accounting-Ledger-App.git`
 * `launch application with Intellij IDE`
 * `run program with maven to launch`
-
 
 ## Images: 
 
 ## Code Highlight:
+
+## License:
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
