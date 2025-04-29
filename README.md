@@ -28,10 +28,12 @@
 - [Description](#description)
 - [User Story](#user-story)
 - [Installation](#installation)
-- [Preview](#preview)
 - [Code Highlight](#code-highlight)
 - [Credits and Resources](#credits-and-resources)
 - [License](#license)
+
+## Preview:
+<img src="./img/app gif.gif">
 
 ## Description:
 First capstone project for Year Up app development track. A banking application that allows users to add deposits, make payments, view detailed payment history, and generate account reports with specific parameters. A CLI app made fully with java, makes use of fundemental concepts such as CRUD, loops, arraylists, and reading/writing to files.  
