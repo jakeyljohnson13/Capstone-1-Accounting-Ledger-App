@@ -46,9 +46,6 @@ First capstone project for Year Up app development track. A banking application 
 * `launch application with Intellij IDE`
 * `run program with maven to launch`
 
-## Preview:
-<img src="./img/app gif.gif">
-
 ## Code Highlight:
 
 ## Credits and Resources:
