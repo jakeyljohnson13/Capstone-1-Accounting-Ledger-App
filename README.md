@@ -28,7 +28,7 @@
 - [Description](#description)
 - [User Story](#user-story)
 - [Installation](#installation)
-- [Images](#images)
+- [Preview](#preview)
 - [Code Highlight](#code-highlight)
 - [Credits and Resources](#credits-and-resources)
 - [License](#license)
@@ -43,7 +43,8 @@
 * `launch application with Intellij IDE`
 * `run program with maven to launch`
 
-## Images: 
+## Preview:
+<img src="./img/app gif.gif">
 
 ## Code Highlight:
 
