@@ -1,9 +1,6 @@
 package com.pluralsight;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -19,30 +16,8 @@ public class Ledger {
     static List<Ledger> ledgerList = new ArrayList<>();
 
 
-//    public static void main(String[] args) {
-//        Ledger ledger = new Ledger();
-//        ledger.setTransactionDate(LocalDate.now());
-//        LocalTime TransactionTime = (LocalTime.now());
-//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-//        String formattedTime = TransactionTime.format(formatter);
-//        ledger.setTransactionTime(LocalTime.parse(formattedTime, formatter));
-//
-//        ledger.setDescription("Grocery Shopping");
-//        ledger.setVendor("Supermarket");
-//        ledger.setAmount(150.75);
-//
-//        List<Ledger> ledgerList = new ArrayList<>();
-//        ledgerList.add(ledger);
-//
-//        displayLedger(ledgerList);
-//    }
-
     public Ledger() {
-        this.transactionDate = LocalDate.now();
-        this.transactionTime = LocalTime.now();
-        this.description = "";
-        this.vendor = "";
-        this.amount = 0.0;
+
     }
 
     public Ledger(LocalDate _transactionDate, LocalTime _transactionTime, String _description, String _vendor, double _amount) {
@@ -77,20 +52,18 @@ public class Ledger {
         System.out.printf("Amount: $%.2f%n", _ledger.getAmount());
     }
 
-
-    public static List displayLedgers(List<Ledger> ledgerList) {
+    public static void displayLedgers(List<Ledger> ledgerList) {
         if (ledgerList.isEmpty()) {
             System.out.println("\nNo transactions in the ledger.");
-            return null;
+            return;
         }
-
         for (Ledger ledger : ledgerList) {
             printLedger(ledger);
             System.out.println("-------------------------------");
         }
-        return List.of(ledgerList);
     }
 
+    // method for reading transactions from CSV and adding them to the ledgerList
     public static void readFromTransactionCsv() {
         try {
             FileReader fileReader = new FileReader("transaction.csv");
@@ -116,6 +89,29 @@ public class Ledger {
             System.out.println("Error reading transactions from CSV: " + e.getMessage());
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    // method for writing transactions to CSV, when read they are added to the ledgerList
+    public static void writeToTransactionCsv(String _vendor, String _description, double _amount) {
+        LocalDate transactionDate = LocalDate.now();
+        LocalTime transactionTime = LocalTime.now();
+        try {
+            FileWriter fileWriter = new FileWriter("transaction.csv");
+            BufferedWriter writer = new BufferedWriter(fileWriter);
+            File file = new File("transaction.csv");
+            // Check if the file is empty
+            if (!file.exists() || file.length() == 0) {
+                // Write the header if the file is empty
+                writer.write("Date|Time|Description|Vendor|Amount\n");
+            }
+            // Write the transaction details
+            String formattedDate = transactionDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            String formattedTime = transactionTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            writer.append(formattedDate).append("|").append(formattedTime).append("|").append(_description).append("|").append(_vendor).append("|").append(String.valueOf(_amount)).append("\n");
+
+        } catch (IOException e) {
+            System.out.println("Error writing transactions to CSV: " + e.getMessage());
         }
     }
 

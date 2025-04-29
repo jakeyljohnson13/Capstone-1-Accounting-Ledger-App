@@ -23,7 +23,6 @@ static String art = """
                 """;
 
 static String ledgerArt = """
-                \n
                 ╔──────────────────────────────────╗
                 │ _              _                 │
                 │| |            | |                │
@@ -37,7 +36,6 @@ static String ledgerArt = """
                 """;
 
 static String reportArt = """
-                \n
                 ╔─────────────────────────────────────╗
                 │ _____                       _       │
                 │|  __ \\                     | |      │
@@ -50,7 +48,6 @@ static String reportArt = """
                 ╚─────────────────────────────────────╝
                 """;
 static String menuArt = """
-        \n
         ╔────────────────────────────────────────────────╗
         │ __  __       _         __  __                  │
         │|  \\/  |     (_)       |  \\/  |                 │
@@ -106,11 +103,12 @@ static String menuArt = """
                     // Call method to handle deposit
                     System.out.println("Making a deposit...");
                     loadingBar();
+                    Transactions.makeDeposit();
                     break;
                 case 2:
                     System.out.println("Making a payment...");
                     loadingBar();
-                    // Call method to handle payment
+                    Transactions.makePayment();
                     break;
                 case 3:
                     System.out.println("Accessing the ledger...");
@@ -136,8 +134,9 @@ static String menuArt = """
 
     public static void ledgerMenu() throws InterruptedException {
         // Placeholder for ledger menu functionality
-
        while(true) {
+           Ledger.readFromTransactionCsv();
+
            System.out.println("\n------Ledger Menu------");
            System.out.println("1 | Display All Transactions");
            System.out.println("2 | Show Deposits");
@@ -249,5 +248,6 @@ static String menuArt = """
             System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
             TimeUnit.MILLISECONDS.sleep(200);
         }
+        System.out.println("\n");
     }
 }
