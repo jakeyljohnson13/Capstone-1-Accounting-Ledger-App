@@ -49,7 +49,7 @@ First capstone project for Year Up app development track. A banking application 
 ## Code Highlight:
 
 ## Credits and Resources:
-* Assisatnce from fellow Year Up students.
+* Assisatnce from fellow Year Up students (Abe).
 * Instructor: Ramsey M.
 * Pluralsight Workbooks 1-3
 * Google search
