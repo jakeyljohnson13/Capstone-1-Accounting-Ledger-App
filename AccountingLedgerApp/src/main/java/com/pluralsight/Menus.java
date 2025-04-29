@@ -9,18 +9,18 @@ public class Menus {
 static Scanner read = new Scanner(System.in);
 
 static String art = """
-                ╔───────────────────────────────────────────╗
-                │     _    ____ ____                        │
-                │    / \\  / ___/ ___|                       │
-                │   / _ \\| |  | |  _                        │
-                │  / ___ \\ |__| |_| |                       │
-                │ /_/__ \\_\\____\\____| _  _____ _   _  ____  │
-                │ | __ )  / \\  | \\ | | |/ /_ _| \\ | |/ ___| │
-                │ |  _ \\ / _ \\ |  \\| | ' / | ||  \\| | |  _  │
-                │ | |_) / ___ \\| |\\  | . \\ | || |\\  | |_| | │
-                │ |____/_/   \\_\\_| \\_|_|\\_\\___|_| \\_|\\____| │
-                ╚───────────────────────────────────────────╝
-                """;
+        ╔───────────────────────────────────────────╗
+        │     _    ____ ____                        │
+        │    / \\  / ___/ ___|                       │
+        │   / _ \\| |  | |  _                        │
+        │  / ___ \\ |__| |_| |                       │
+        │ /_/__ \\_\\____\\____| _  _____ _   _  ____  │
+        │ | __ )  / \\  | \\ | | |/ /_ _| \\ | |/ ___| │
+        │ |  _ \\ / _ \\ |  \\| | ' / | ||  \\| | |  _  │
+        │ | |_) / ___ \\| |\\  | . \\ | || |\\  | |_| | │
+        │ |____/_/   \\_\\_| \\_|_|\\_\\___|_| \\_|\\____| │
+        ╚───────────────────────────────────────────╝
+        """;
 
 static String ledgerArt = """
                 ╔──────────────────────────────────╗
@@ -82,6 +82,7 @@ static String exitArt = """
 
         if (start == 1) {
             try {
+                // converts art to a character array and prints it character by character with a delay
                 for (char c : art.toCharArray()) {
                     System.out.print(c);
                     Thread.sleep(1); // Adjust the delay (milliseconds) to control speed
@@ -181,12 +182,14 @@ static String exitArt = """
                    loadingBar();
                    System.out.println("----------------------------");
                    // Call method to show deposits
+                   Ledger.displayDeposits();
                    break;
                case 3:
                    System.out.println("Showing payments...");
                    loadingBar();
                    System.out.println("----------------------------");
                    // Call method to show payments
+                     Ledger.displayPayments();
                    break;
                case 4:
                    System.out.println("Viewing reports...");
@@ -204,12 +207,12 @@ static String exitArt = """
                    System.out.println("-----------------------------------------------------");
                    for (char c : menuArt.toCharArray()) {
                        System.out.print(c);
-                       Thread.sleep(1); // Adjust the delay (milliseconds) to control speed
+                       Thread.sleep(1);
                    }
                    return;
                default:
                    System.out.println("Invalid choice. Please try again.");
-                   ledgerMenu(); // Recursively call the menu for invalid input
+                   ledgerMenu();
                    break;
            }
        }

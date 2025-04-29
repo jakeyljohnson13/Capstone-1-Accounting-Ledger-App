@@ -117,7 +117,33 @@ public class Ledger {
         }
     }
 
+    public static void displayDeposits() {
+        boolean hasDeposits = false;
+        for (Ledger ledger : ledgerList) {
+            if (ledger.getAmount() > 0) {
+                printLedger(ledger);
+                System.out.println("--------------------------------------------------------");
+                hasDeposits = true;
+            }
+        }
+        if (!hasDeposits) {
+            System.out.println("No deposits found.");
+        }
+    }
+
+    public static void displayPayments() {
+        boolean hasPayments = false;
+        for (Ledger ledger : ledgerList) {
+            if (ledger.getAmount() < 0) {
+                printLedger(ledger);
+                System.out.println("--------------------------------------------------------");
+                hasPayments = true;
+            }
+        }
+        if (!hasPayments) {
+            System.out.println("No payments found.");
+        }
 
 
-
+    }
 }
