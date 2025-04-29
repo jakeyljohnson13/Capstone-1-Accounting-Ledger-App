@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -8,7 +9,7 @@ public class Menus {
 static Scanner read = new Scanner(System.in);
 
     public static void startMenu() throws InterruptedException {
-        System.out.println("Welcome to the KG Banking System!");
+        System.out.println("Welcome to the ACG Banking System!");
         System.out.println("Enter 1 to start the program");
         System.out.println("Enter any other key to exit the program");
         System.out.print("> ");
@@ -17,17 +18,18 @@ static Scanner read = new Scanner(System.in);
 
         boolean running = false;
         String art = """
-                +=============================================+
-                |                __  __ ____                  |
-                |               |  |/  / (_,`                 |
-                |               |__|\\__\\____)                 |
-                |   _____  ____  __  _ __  __ _ __  _ ____    |
-                |   | () )/ () \\|  \\| |  |/  / |  \\| / (_,`   |
-                |   |_()_)__/\\__\\_|\\__|__|\\__\\_|_|\\__\\____)   |
-                |  ____ __  __ ____  _____ ____ __  __   ____ |
-                | (_ (_`\\ \\/ /(_ (_`|_   _| ===|  \\/  | (_ (_`|
-                |.__)__) |__|.__)__)  |_| |____|_|\\/|_|.__)__)|
-                +=============================================+""";
+                ╔───────────────────────────────────────────╗
+                │     _    ____ ____                        │
+                │    / \\  / ___/ ___|                       │
+                │   / _ \\| |  | |  _                        │
+                │  / ___ \\ |__| |_| |                       │
+                │ /_/__ \\_\\____\\____| _  _____ _   _  ____  │
+                │ | __ )  / \\  | \\ | | |/ /_ _| \\ | |/ ___| │
+                │ |  _ \\ / _ \\ |  \\| | ' / | ||  \\| | |  _  │
+                │ | |_) / ___ \\| |\\  | . \\ | || |\\  | |_| | │
+                │ |____/_/   \\_\\_| \\_|_|\\_\\___|_| \\_|\\____| │
+                ╚───────────────────────────────────────────╝
+                """;
 
         if (start == 1) {
             try {
@@ -58,14 +60,14 @@ static Scanner read = new Scanner(System.in);
                 case 1:
                     // Call method to handle deposit
                     System.out.println("Making a deposit...");
-                    for (int i = 0; i <= 100; i+=10) {
+                    for (int i = 0; i <= 100; i+=20) {
                         System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
                         TimeUnit.MILLISECONDS.sleep(200);
                     }
                     break;
                 case 2:
                     System.out.println("Making a payment...");
-                    for (int i = 0; i <= 100; i+=10) {
+                    for (int i = 0; i <= 100; i+=20) {
                         System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
                         TimeUnit.MILLISECONDS.sleep(200);
                     }
@@ -73,7 +75,7 @@ static Scanner read = new Scanner(System.in);
                     break;
                 case 3:
                     System.out.println("Accessing the ledger...");
-                    for (int i = 0; i <= 100; i+=10) {
+                    for (int i = 0; i <= 100; i+=20) {
                         System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
                         TimeUnit.MILLISECONDS.sleep(200);
                     }
@@ -94,5 +96,40 @@ static Scanner read = new Scanner(System.in);
 
     public static void ledgerMenu() {
         // Placeholder for ledger menu functionality
+        System.out.println("\n------Ledger Menu------");
+        System.out.println("1 | Display All Transactions");
+        System.out.println("2 | Show Deposits");
+        System.out.println("3 | Show Payments");
+        System.out.println("4 | View Reports");
+        System.out.println("5 | Return to Main Menu");
+        int choice = read.nextInt();
+        read.nextLine();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Displaying all transactions...");
+                // Call method to display all transactions
+                Ledger.displayLedgers(Ledger.getLedgerList());
+                break;
+            case 2:
+                System.out.println("Showing deposits...");
+                // Call method to show deposits
+                break;
+            case 3:
+                System.out.println("Showing payments...");
+                // Call method to show payments
+                break;
+            case 4:
+                System.out.println("Viewing reports...");
+                // Call method to view reports
+                break;
+            case 5:
+                System.out.println("Returning to main menu...");
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+                ledgerMenu(); // Recursively call the menu for invalid input
+                break;
+        }
     };
 }
