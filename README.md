@@ -30,6 +30,7 @@
 - [Installation](#installation)
 - [Images](#images)
 - [Code Highlight](#code-highlight)
+- [Credits and Resources](#credits-and-resources)
 - [License](#license)
 
 ## Description:
@@ -45,6 +46,14 @@
 ## Images: 
 
 ## Code Highlight:
+
+## Credits and Resources:
+* Assisatnce from fellow Year Up students.
+* Instructor: Ramsey M.
+* Pluralsight Workbooks 1-3
+* Google search
+* DeepSeek and Google Gemini for troubleshooting.
+* Source Code by Pluralsight.
 
 ## License:
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
