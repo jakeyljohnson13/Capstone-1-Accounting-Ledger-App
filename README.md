@@ -26,7 +26,6 @@
 
 ## 🌏 Table of Contents:
 - [Description](#description)
-- [User Story](#user-story)
 - [Installation](#installation)
 - [Code Highlight](#code-highlight)
 - [Credits and Resources](#credits-and-resources)
@@ -35,16 +34,17 @@
 ## Preview:
 <img src="./img/app gif.gif">
 
+
 ## Description:
 First capstone project for Year Up app development track. A banking application that allows users to add deposits, make payments, view detailed payment history, and generate account reports with specific parameters. A CLI app made fully with java, makes use of fundemental concepts such as CRUD, loops, arraylists, and reading/writing to files.  
 
-## User Story:
 
 ## Installation:
 
 * `git clone https://github.com/Gagucci/Capstone-1-Accounting-Ledger-App.git`
 * `launch application with Intellij IDE`
 * `run program with maven to launch`
+
 
 ## Code Highlight:
 
@@ -72,13 +72,15 @@ public static void loadingBar() throws InterruptedException {
 ```
 <img src ="./img/loadbar gif.gif">
 
+
 ## Credits and Resources:
-* Assisatnce from fellow Year Up students (Abe).
+* Assisatnce from fellow Year Up students.
 * Instructor: Ramsey M.
 * Pluralsight Workbooks 1-3
 * Google search
 * DeepSeek and Google Gemini for troubleshooting.
 * Source Code by Pluralsight.
+
 
 ## License:
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
