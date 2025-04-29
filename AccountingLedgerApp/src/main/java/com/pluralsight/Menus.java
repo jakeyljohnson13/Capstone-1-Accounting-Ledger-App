@@ -8,7 +8,7 @@ public class Menus {
 
 static Scanner read = new Scanner(System.in);
 
-        static String art = """
+static String art = """
                 ╔───────────────────────────────────────────╗
                 │     _    ____ ____                        │
                 │    / \\  / ___/ ___|                       │
@@ -22,7 +22,7 @@ static Scanner read = new Scanner(System.in);
                 ╚───────────────────────────────────────────╝
                 """;
 
-        static String ledgerArt = """
+static String ledgerArt = """
                 \n
                 ╔──────────────────────────────────╗
                 │ _              _                 │
@@ -36,7 +36,7 @@ static Scanner read = new Scanner(System.in);
                 ╚──────────────────────────────────╝
                 """;
 
-        static String reportArt = """
+static String reportArt = """
                 \n
                 ╔─────────────────────────────────────╗
                 │ _____                       _       │
@@ -49,6 +49,18 @@ static Scanner read = new Scanner(System.in);
                 │           |_|                       │
                 ╚─────────────────────────────────────╝
                 """;
+static String menuArt = """
+        \n
+        ╔────────────────────────────────────────────────╗
+        │ __  __       _         __  __                  │
+        │|  \\/  |     (_)       |  \\/  |                 │
+        │| \\  / | __ _ _ _ __   | \\  / | ___ _ __  _   _ │
+        │| |\\/| |/ _` | | '_ \\  | |\\/| |/ _ \\ '_ \\| | | |│
+        │| |  | | (_| | | | | | | |  | |  __/ | | | |_| |│
+        │|_|  |_|\\__,_|_|_| |_| |_|  |_|\\___|_| |_|\\__,_|│
+        ╚────────────────────────────────────────────────╝
+        """;
+
     public static void startMenu() throws InterruptedException {
         System.out.println("Welcome to the ACG Banking System!");
         System.out.println("Enter 1 to start the program");
@@ -66,6 +78,11 @@ static Scanner read = new Scanner(System.in);
                     Thread.sleep(5); // Adjust the delay (milliseconds) to control speed
                     running = true;
                 }
+                System.out.println("-------------------------------------------------");
+                for (char c : menuArt.toCharArray()) {
+                    System.out.print(c);
+                    Thread.sleep(5);
+                }
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 System.err.println("Interrupted while displaying art.");
@@ -77,10 +94,10 @@ static Scanner read = new Scanner(System.in);
 
         while (running) {
             System.out.println("\n------Welcome------");
-            System.out.println("1 | Make a deposit");
-            System.out.println("2 | Make a payment");
+            System.out.println("1 | Make a Deposit");
+            System.out.println("2 | Make a Payment");
             System.out.println("3 | Ledger");
-            System.out.println("4 | Exit the program");
+            System.out.println("4 | Exit the Program");
             int choice = read.nextInt();
             read.nextLine();
 
@@ -100,7 +117,7 @@ static Scanner read = new Scanner(System.in);
                     loadingBar();
                     for (char c : ledgerArt.toCharArray()) {
                         System.out.print(c);
-                        Thread.sleep(5); // Adjust the delay (milliseconds) to control speed
+                        Thread.sleep(5);
                     }
                     ledgerMenu();
                     break;
@@ -152,13 +169,17 @@ static Scanner read = new Scanner(System.in);
                    loadingBar();
                    for (char c : reportArt.toCharArray()) {
                        System.out.print(c);
-                       Thread.sleep(5); // Adjust the delay (milliseconds) to control spee
+                       Thread.sleep(5);
                    }
                    reportsMenu();
                    break;
                case 5:
                    System.out.println("Returning to main menu...");
                    loadingBar();
+                   for (char c : menuArt.toCharArray()) {
+                       System.out.print(c);
+                       Thread.sleep(5); // Adjust the delay (milliseconds) to control speed
+                   }
                    return;
                default:
                    System.out.println("Invalid choice. Please try again.");
@@ -176,7 +197,7 @@ static Scanner read = new Scanner(System.in);
             System.out.println("3 | Sort by Year to Date");
             System.out.println("4 | Sort by Previous Year");
             System.out.println("5 | Search by Vendor");
-            System.out.println("6 | Return to Main Menu");
+            System.out.println("6 | Return to Ledger Menu");
             int choice = read.nextInt();
             read.nextLine();
 
@@ -207,8 +228,12 @@ static Scanner read = new Scanner(System.in);
                     // Call method to search by vendor
                     break;
                 case 6:
-                    System.out.println("Returning to main menu...");
+                    System.out.println("Returning to ledger menu...");
                     loadingBar();
+                    for (char c : ledgerArt.toCharArray()) {
+                        System.out.print(c);
+                        Thread.sleep(5); // Adjust the delay (milliseconds) to control speed
+                    }
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
