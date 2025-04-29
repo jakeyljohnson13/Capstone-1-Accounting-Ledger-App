@@ -3,6 +3,7 @@ package com.pluralsight;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -90,17 +91,34 @@ public class Ledger {
         return List.of(ledgerList);
     }
 
-    public static void readFromTransactionCsv(String filePath) {
+    public static void readFromTransactionCsv() {
         // This method can be implemented to read transactions from a CSV file
         // and populate the ledgerList with Ledger objects.
         // For now, this is just a placeholder.
         try {
-            FileReader fileReader = new FileReader("transactions.csv");
+            FileReader fileReader = new FileReader("transaction.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
             String line;
+            bufReader.readLine();
+            while ((line = bufReader.readLine()) != null) {
+                String[] column = line.split("\\|");
+                if(column.length == 5) {
+                    LocalDate transactionDate = LocalDate.parse(column[0]);
+                    LocalTime transactionTime = LocalTime.parse(column[1]);
+                    String description = column[2];
+                    String vendor = column[3];
+                    double amount = Double.parseDouble(column[4]);
 
+                    Ledger ledger = new Ledger(transactionDate, transactionTime, description, vendor, amount);
+                    ledgerList.add(ledger);
+
+                }
+            }
+            bufReader.close();
         } catch (FileNotFoundException e) {
             System.out.println("Error reading transactions from CSV: " + e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

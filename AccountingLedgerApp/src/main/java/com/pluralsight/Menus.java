@@ -60,14 +60,14 @@ static Scanner read = new Scanner(System.in);
                 case 1:
                     // Call method to handle deposit
                     System.out.println("Making a deposit...");
-                    for (int i = 0; i <= 100; i+=20) {
+                    for (int i = 0; i <= 100; i+=10) {
                         System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
                         TimeUnit.MILLISECONDS.sleep(200);
                     }
                     break;
                 case 2:
                     System.out.println("Making a payment...");
-                    for (int i = 0; i <= 100; i+=20) {
+                    for (int i = 0; i <= 100; i+=10) {
                         System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
                         TimeUnit.MILLISECONDS.sleep(200);
                     }
@@ -125,7 +125,7 @@ static Scanner read = new Scanner(System.in);
                 break;
             case 5:
                 System.out.println("Returning to main menu...");
-                break;
+                return;
             default:
                 System.out.println("Invalid choice. Please try again.");
                 ledgerMenu(); // Recursively call the menu for invalid input
