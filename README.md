@@ -48,6 +48,27 @@ First capstone project for Year Up app development track. A banking application 
 
 ## Code Highlight:
 
+For-each loop that converts a string holding the ascii art into a array of characters, then prints each character with a 1 millisecond delay
+
+``` java
+
+for (char c : art.toCharArray()) {
+                    System.out.print(c);
+                    Thread.sleep(1); // Adjust the delay (milliseconds) to control speed
+                    running = true;
+                }
+```
+<img src = ./img/>
+``` java
+public static void loadingBar() throws InterruptedException {
+        for (int i = 0; i <= 100; i+=20) {
+            System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
+            TimeUnit.MILLISECONDS.sleep(100);
+        }
+        System.out.println("\n");
+    }
+```
+
 ## Credits and Resources:
 * Assisatnce from fellow Year Up students (Abe).
 * Instructor: Ramsey M.
