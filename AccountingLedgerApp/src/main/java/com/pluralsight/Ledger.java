@@ -80,7 +80,7 @@ public class Ledger {
 
     public static List displayLedgers(List<Ledger> ledgerList) {
         if (ledgerList.isEmpty()) {
-            System.out.println("No transactions in the ledger.");
+            System.out.println("\nNo transactions in the ledger.");
             return null;
         }
 
@@ -92,9 +92,6 @@ public class Ledger {
     }
 
     public static void readFromTransactionCsv() {
-        // This method can be implemented to read transactions from a CSV file
-        // and populate the ledgerList with Ledger objects.
-        // For now, this is just a placeholder.
         try {
             FileReader fileReader = new FileReader("transaction.csv");
             BufferedReader bufReader = new BufferedReader(fileReader);
