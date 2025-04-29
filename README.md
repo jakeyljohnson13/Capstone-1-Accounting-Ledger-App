@@ -48,7 +48,7 @@ First capstone project for Year Up app development track. A banking application 
 
 ## Code Highlight:
 
-For-each loop that converts a string holding the ascii art into a array of characters, then prints each character with a 1 millisecond delay
+For-each loop that converts a string holding the ascii art into a array of characters, then prints each character with a 1 millisecond delay:
 
 ``` java
 
@@ -60,7 +60,7 @@ for (char c : art.toCharArray()) {
 ```
 <img src ="./img/ascii gif.gif">
 
-For loop that adds equal signs to the loading bar up to 10 times by when int i reaches 100
+For loop that adds equal signs to the loading bar up to 10 times by when int i reaches 100:
 ``` java
 public static void loadingBar() throws InterruptedException {
         for (int i = 0; i <= 100; i+=20) {
