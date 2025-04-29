@@ -25,15 +25,15 @@
 
 
 ## 🌏 Table of Contents:
-- [Description] (#description)
-- [User Story] (#userstory)
-- [Images] (#images)
-- [Code Highlight] (#codehighlight)
+- [Description](#description)
+- [User Story](#user-story)
+- [Images](#images)
+- [Code Highlight](#code-highlight)
 
-## 📜 Description:
+## Description:
 
-## 🫂 User Story:
+## User Story:
 
-## 📸 Images: 
+## Images: 
 
-## 👨🏽‍💻 Code Highlight:
+## Code Highlight:
