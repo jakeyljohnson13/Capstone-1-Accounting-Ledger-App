@@ -28,12 +28,15 @@
 - [Description](#description)
 - [User Story](#user-story)
 - [Installation](#installation)
-- [Images](#images)
 - [Code Highlight](#code-highlight)
 - [Credits and Resources](#credits-and-resources)
 - [License](#license)
 
+## Preview:
+<img src="./img/app gif.gif">
+
 ## Description:
+First capstone project for Year Up app development track. A banking application that allows users to add deposits, make payments, view detailed payment history, and generate account reports with specific parameters. A CLI app made fully with java, makes use of fundemental concepts such as CRUD, loops, arraylists, and reading/writing to files.  
 
 ## User Story:
 
@@ -43,12 +46,31 @@
 * `launch application with Intellij IDE`
 * `run program with maven to launch`
 
-## Images: 
-
 ## Code Highlight:
 
+For-each loop that converts a string holding the ascii art into a array of characters, then prints each character with a 1 millisecond delay
+
+``` java
+
+for (char c : art.toCharArray()) {
+                    System.out.print(c);
+                    Thread.sleep(1); // Adjust the delay (milliseconds) to control speed
+                    running = true;
+                }
+```
+<img src = ./img/>
+``` java
+public static void loadingBar() throws InterruptedException {
+        for (int i = 0; i <= 100; i+=20) {
+            System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
+            TimeUnit.MILLISECONDS.sleep(100);
+        }
+        System.out.println("\n");
+    }
+```
+
 ## Credits and Resources:
-* Assisatnce from fellow Year Up students.
+* Assisatnce from fellow Year Up students (Abe).
 * Instructor: Ramsey M.
 * Pluralsight Workbooks 1-3
 * Google search
