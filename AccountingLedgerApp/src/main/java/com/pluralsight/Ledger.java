@@ -45,21 +45,17 @@ public class Ledger {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-        System.out.println("Transaction Date: " + _ledger.getTransactionDate().format(dateFormatter));
-        System.out.println("Transaction Time: " + _ledger.getTransactionTime().format(timeFormatter));
-        System.out.println("Description: " + _ledger.getDescription());
-        System.out.println("Vendor: " + _ledger.getVendor());
-        System.out.printf("Amount: $%.2f%n", _ledger.getAmount());
+        System.out.println(_ledger.getTransactionDate().format(dateFormatter) + "|" + _ledger.getTransactionTime().format(timeFormatter) + "|" + _ledger.getDescription() + "|" + _ledger.getVendor() + "|" + _ledger.getAmount());
     }
 
-    public static void displayLedgers(List<Ledger> ledgerList) {
+    public static void printAllLedgers() {
         if (ledgerList.isEmpty()) {
-            System.out.println("\nNo transactions in the ledger.");
+            System.out.println("No transactions found.");
             return;
         }
         for (Ledger ledger : ledgerList) {
             printLedger(ledger);
-            System.out.println("-------------------------------");
+            System.out.println("--------------------------------------------------------");
         }
     }
 
@@ -97,7 +93,7 @@ public class Ledger {
         LocalDate transactionDate = LocalDate.now();
         LocalTime transactionTime = LocalTime.now();
         try {
-            FileWriter fileWriter = new FileWriter("transaction.csv");
+            FileWriter fileWriter = new FileWriter("transaction.csv" , true);
             BufferedWriter writer = new BufferedWriter(fileWriter);
             File file = new File("transaction.csv");
             // Check if the file is empty
@@ -109,7 +105,13 @@ public class Ledger {
             String formattedDate = transactionDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             String formattedTime = transactionTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
             writer.append(formattedDate).append("|").append(formattedTime).append("|").append(_description).append("|").append(_vendor).append("|").append(String.valueOf(_amount)).append("\n");
+            writer.close();
 
+            if (_amount > 0) {
+                System.out.println("Deposit of $" + _amount + " made to " + _vendor + " with description: " + _description);
+            } else {
+                System.out.println("Payment of $" + Math.abs(_amount) + " made to " + _vendor + " with description: " + _description);
+            }
         } catch (IOException e) {
             System.out.println("Error writing transactions to CSV: " + e.getMessage());
         }
