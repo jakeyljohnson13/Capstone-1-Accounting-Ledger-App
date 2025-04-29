@@ -27,12 +27,20 @@
 ## 🌏 Table of Contents:
 - [Description](#description)
 - [User Story](#user-story)
+- [Installation](#installation)
 - [Images](#images)
 - [Code Highlight](#code-highlight)
 
 ## Description:
 
 ## User Story:
+
+## Installation:
+
+* `git clone git@github.com:chandraucb/payitforward.git`
+* `launch application with Intellij IDE`
+* `run program with maven to launch`
+
 
 ## Images: 
 
