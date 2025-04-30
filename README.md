@@ -74,7 +74,7 @@ public static void loadingBar() throws InterruptedException {
 
 
 ## Credits and Resources:
-* Assisatnce from fellow Year Up students.
+* Assistance from fellow Year Up students.
 * Instructor: Ramsey M.
 * Pluralsight Workbooks 1-3
 * [Java LocalDateTime Documentation](https://docs.oracle.com/en/java/javase/24/docs/api/java.base/java/time/LocalDateTime.html)
