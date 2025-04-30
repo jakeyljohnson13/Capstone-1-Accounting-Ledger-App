@@ -108,46 +108,55 @@ static String exitArt = """
             System.out.println("3 | Ledger");
             System.out.println("4 | Exit the Program");
             System.out.print("> ");
-            int choice = read.nextInt();
-            read.nextLine();
 
-            switch (choice) {
-                case 1:
-                    // Call method to handle deposit
-                    System.out.println("Making a deposit...");
-                    loadingBar();
-                    System.out.println("----------------------------");
-                    Transactions.makeDeposit();
-                    break;
-                case 2:
-                    System.out.println("Making a payment...");
-                    loadingBar();
-                    System.out.println("----------------------------");
-                    Transactions.makePayment();
-                    break;
-                case 3:
-                    System.out.println("Accessing the ledger...");
-                    loadingBar();
-                    System.out.println("------------------------------------");
-                    for (char c : ledgerArt.toCharArray()) {
-                        System.out.print(c);
-                        Thread.sleep(1);
-                    }
-                    ledgerMenu();
-                    break;
-                case 4:
-                    System.out.println("Exiting the program...");
-                    System.out.println("------------------------------------------------");
-                    for (char c : exitArt.toCharArray()) {
-                        System.out.print(c);
-                        Thread.sleep(1);
-                    }
-                    running = false;
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-                    break;
+            String choiceStr = read.nextLine().trim();
+            int choice;
+
+            try {
+                choice = Integer.parseInt(choiceStr);
+                if (choice < 1 || choice > 4) {
+                    System.out.println("Invalid choice. Please enter a number between 1 and 4.");
+                    continue;
+                }
+                switch (choice) {
+                    case 1:
+                        // Call method to handle deposit
+                        System.out.println("Making a deposit...");
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        Transactions.makeDeposit();
+                        break;
+                    case 2:
+                        System.out.println("Making a payment...");
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        Transactions.makePayment();
+                        break;
+                    case 3:
+                        System.out.println("Accessing the ledger...");
+                        loadingBar();
+                        System.out.println("------------------------------------");
+                        for (char c : ledgerArt.toCharArray()) {
+                            System.out.print(c);
+                            Thread.sleep(1);
+                        }
+                        ledgerMenu();
+                        break;
+                    case 4:
+                        System.out.println("Exiting the program...");
+                        System.out.println("------------------------------------------------");
+                        for (char c : exitArt.toCharArray()) {
+                            System.out.print(c);
+                            Thread.sleep(1);
+                        }
+                        running = false;
+                        break;
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number (1-4).");
             }
+
 
         }
 
@@ -155,71 +164,78 @@ static String exitArt = """
 
     public static void ledgerMenu() throws InterruptedException {
 
-           Ledger.readFromTransactionCsv();
+        Ledger.readFromTransactionCsv();
 
-       while(true) {
+        while (true) {
+            System.out.println("\n------Ledger Menu------");
+            System.out.println("1 | Display All Transactions");
+            System.out.println("2 | Show Deposits");
+            System.out.println("3 | Show Payments");
+            System.out.println("4 | View Reports");
+            System.out.println("5 | Return to Main Menu");
+            System.out.print("> ");
 
-           System.out.println("\n------Ledger Menu------");
-           System.out.println("1 | Display All Transactions");
-           System.out.println("2 | Show Deposits");
-           System.out.println("3 | Show Payments");
-           System.out.println("4 | View Reports");
-           System.out.println("5 | Return to Main Menu");
-           System.out.print("> ");
-           int choice = read.nextInt();
-           read.nextLine();
+            String choiceStr = read.nextLine().trim();
+            int choice;
 
-           switch (choice) {
-               case 1:
-                   System.out.println("Displaying all transactions...");
-                   // Call method to display all transactions
-                   loadingBar();
-                   System.out.println("----------------------------");
-                   Ledger.printAllLedgers();
-                   break;
-               case 2:
-                   System.out.println("Showing deposits...");
-                   loadingBar();
-                   System.out.println("----------------------------");
-                   // Call method to show deposits
-                   Ledger.displayDeposits();
-                   break;
-               case 3:
-                   System.out.println("Showing payments...");
-                   loadingBar();
-                   System.out.println("----------------------------");
-                   // Call method to show payments
-                     Ledger.displayPayments();
-                   break;
-               case 4:
-                   System.out.println("Viewing reports...");
-                   loadingBar();
-                   System.out.println("---------------------------------------");
-                   for (char c : reportArt.toCharArray()) {
-                       System.out.print(c);
-                       Thread.sleep(1);
-                   }
-                   reportsMenu();
-                   break;
-               case 5:
-                   System.out.println("Returning to main menu...");
-                   loadingBar();
-                   System.out.println("-----------------------------------------------------");
-                   for (char c : menuArt.toCharArray()) {
-                       System.out.print(c);
-                       Thread.sleep(1);
-                   }
-                   return;
-               default:
-                   System.out.println("Invalid choice. Please try again.");
-                   ledgerMenu();
-                   break;
-           }
-       }
+            try {
+                choice = Integer.parseInt(choiceStr);
+                if (choice < 1 || choice > 5) {
+                    System.out.println("Invalid choice. Please enter a number between 1 and 5.");
+                    continue;
+                }
+
+                switch (choice) {
+                    case 1:
+                        System.out.println("Displaying all transactions...");
+                        // Call method to display all transactions
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        Ledger.printAllLedgers();
+                        break;
+                    case 2:
+                        System.out.println("Showing deposits...");
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        // Call method to show deposits
+                        Ledger.displayDeposits();
+                        break;
+                    case 3:
+                        System.out.println("Showing payments...");
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        // Call method to show payments
+                        Ledger.displayPayments();
+                        break;
+                    case 4:
+                        System.out.println("Viewing reports...");
+                        loadingBar();
+                        System.out.println("---------------------------------------");
+                        for (char c : reportArt.toCharArray()) {
+                            System.out.print(c);
+                            Thread.sleep(1);
+                        }
+                        reportsMenu();
+                        break;
+                    case 5:
+                        System.out.println("Returning to main menu...");
+                        loadingBar();
+                        System.out.println("-----------------------------------------------------");
+                        for (char c : menuArt.toCharArray()) {
+                            System.out.print(c);
+                            Thread.sleep(1);
+                        }
+                        return;
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number (1-5).");
+            }
+        }
     }
 
     public static void reportsMenu() throws InterruptedException {
-        while(true) {
+        while (true) {
             System.out.println("\n------Reports Menu------");
             System.out.println("1 | Sort by Month to Date");
             System.out.println("2 | Sort by Previous Month");
@@ -228,57 +244,65 @@ static String exitArt = """
             System.out.println("5 | Search by Vendor");
             System.out.println("6 | Return to Ledger Menu");
             System.out.print("> ");
-            int choice = read.nextInt();
-            read.nextLine();
 
-            switch (choice) {
-                case 1:
-                    System.out.println("Sorting by month to date...");
-                    loadingBar();
-                    System.out.println("-----------------------------");
-                    // Call method to sort by month to date
-                    Reports.monthToDateTransactionReport();
-                    break;
-                case 2:
-                    System.out.println("Sorting by previous month...");
-                    loadingBar();
-                    System.out.println("----------------------------");
-                    // Call method to sort by previous month
-                    Reports.previousMonthTransactionReport();
-                    break;
-                case 3:
-                    System.out.println("Sorting by year to date...");
-                    loadingBar();
-                    System.out.println("----------------------------");
-                    // Call method to sort by year to date
-                    Reports.yearToDateTransactionReport();
-                    break;
-                case 4:
-                    System.out.println("Sorting by previous year...");
-                    loadingBar();
-                    System.out.println("----------------------------");
-                    // Call method to sort by previous year
-                    break;
-                case 5:
-                    System.out.println("Searching by vendor...");
-                    loadingBar();
-                    System.out.println("----------------------------");
-                    // Call method to search by vendor
-                    break;
-                case 6:
-                    System.out.println("Returning to ledger menu...");
-                    loadingBar();
-                    System.out.println("--------------------------------------");
-                    for (char c : ledgerArt.toCharArray()) {
-                        System.out.print(c);
-                        Thread.sleep(1); // Adjust the delay (milliseconds) to control speed
-                    }
-                    return;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-                    ledgerMenu(); // Recursively call the menu for invalid input
-                    break;
+            String choiceStr = read.nextLine().trim();
+            int choice;
+
+            try {
+                choice = Integer.parseInt(choiceStr);
+                if (choice < 1 || choice > 5) {
+                    System.out.println("Invalid choice. Please enter a number between 1 and 5.");
+                    continue;
+                }
+
+                switch (choice) {
+                    case 1:
+                        System.out.println("Sorting by month to date...");
+                        loadingBar();
+                        System.out.println("-----------------------------");
+                        // Call method to sort by month to date
+                        Reports.monthToDateTransactionReport();
+                        break;
+                    case 2:
+                        System.out.println("Sorting by previous month...");
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        // Call method to sort by previous month
+                        Reports.previousMonthTransactionReport();
+                        break;
+                    case 3:
+                        System.out.println("Sorting by year to date...");
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        // Call method to sort by year to date
+                        Reports.yearToDateTransactionReport();
+                        break;
+                    case 4:
+                        System.out.println("Sorting by previous year...");
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        // Call method to sort by previous year
+                        break;
+                    case 5:
+                        System.out.println("Searching by vendor...");
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        // Call method to search by vendor
+                        break;
+                    case 6:
+                        System.out.println("Returning to ledger menu...");
+                        loadingBar();
+                        System.out.println("--------------------------------------");
+                        for (char c : ledgerArt.toCharArray()) {
+                            System.out.print(c);
+                            Thread.sleep(1); // Adjust the delay (milliseconds) to control speed
+                        }
+                        return;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a number (1-6).");
             }
+
         }
 
     }
