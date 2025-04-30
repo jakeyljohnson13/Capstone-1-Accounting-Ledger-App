@@ -69,7 +69,9 @@ static String exitArt = """
         ╚─────────────────────────────────────────────╝
         """;
 
-    public static void startMenu() throws InterruptedException {
+
+
+    public static void startMenu() {
         System.out.println("Welcome to the ACG Banking System!");
         System.out.println("Enter 1 to start the program");
         System.out.println("Enter any other key to exit the program");
@@ -153,7 +155,7 @@ static String exitArt = """
                         break;
                 }
 
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | InterruptedException e) {
                 System.out.println("Invalid input. Please enter a number (1-4).");
             }
 
@@ -162,7 +164,8 @@ static String exitArt = """
 
     }
 
-    public static void ledgerMenu() throws InterruptedException {
+
+    public static void ledgerMenu() {
 
         Ledger.readFromTransactionCsv();
 
@@ -228,13 +231,14 @@ static String exitArt = """
                         return;
                 }
 
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | InterruptedException e) {
                 System.out.println("Invalid input. Please enter a number (1-5).");
             }
         }
     }
 
-    public static void reportsMenu() throws InterruptedException {
+
+    public static void reportsMenu() {
         while (true) {
             System.out.println("\n------Reports Menu------");
             System.out.println("1 | Sort by Month to Date");
@@ -282,6 +286,7 @@ static String exitArt = """
                         loadingBar();
                         System.out.println("----------------------------");
                         // Call method to sort by previous year
+                        Reports.previousYearTransactionReport();
                         break;
                     case 5:
                         System.out.println("Searching by vendor...");
@@ -299,7 +304,7 @@ static String exitArt = """
                         }
                         return;
                 }
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException | InterruptedException e) {
                 System.out.println("Invalid input. Please enter a number (1-6).");
             }
 
@@ -307,11 +312,17 @@ static String exitArt = """
 
     }
 
-    public static void loadingBar() throws InterruptedException {
-        for (int i = 0; i <= 100; i+=20) {
-            System.out.print("\rLoading: [" + "=".repeat(i/10) + "] " + i + "%");
-            TimeUnit.MILLISECONDS.sleep(100);
+
+    public static void loadingBar() {
+        try {
+            for (int i = 0; i <= 100; i += 20) {
+                System.out.print("\rLoading: [" + "=".repeat(i / 10) + "] " + i + "%");
+                TimeUnit.MILLISECONDS.sleep(100);
+            }
+            System.out.println("\n");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            System.err.println("Loading interrupted.");
         }
-        System.out.println("\n");
     }
 }
