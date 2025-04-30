@@ -1,9 +1,10 @@
 package com.pluralsight;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Reports {
-
+    static Scanner read = new Scanner(System.in);
     public static void monthToDateTransactionReport() {
         System.out.println("Month-to-Date Transaction Report");
         System.out.println("--------------------------------------------------------");
@@ -16,7 +17,6 @@ public class Reports {
         double totalAmount = 0.0;
         boolean hasTransactions = false;
 
-        Menus.loadingBar();
         // for each ledger that is not before the first day of the month and not after today, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (!ledger.getTransactionDate().isBefore(firstDayOfMonth) && !ledger.getTransactionDate().isAfter(today)) {
@@ -51,7 +51,6 @@ public class Reports {
 
         double totalAmount = 0.0;
         boolean hasTransactions = false;
-        Menus.loadingBar();
 
         // for each ledger that is not before the first day of the previous month and not after the last day of the previous month, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
@@ -81,7 +80,6 @@ public class Reports {
 
         double totalAmount = 0.0;
         boolean hasTransactions = false;
-        Menus.loadingBar();
 
         // for each ledger that is not before the first day of the year and not after today, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
@@ -114,7 +112,6 @@ public class Reports {
 
         double totalAmount = 0.0;
         boolean hasTransactions = false;
-        Menus.loadingBar();
 
         // for each ledger that is not before the first day of the previous year and not after the last day of the previous year, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
@@ -130,6 +127,42 @@ public class Reports {
         } else {
             System.out.printf("Total Amount: %.2f%n", totalAmount);
         }
+        System.out.println("--------------------------------------------------------");
+    }
+
+
+    public static void searchByVendorReport() {
+        System.out.println("Search by Vendor Transaction Report");
+        System.out.println("--------------------------------------------------------");
+
+
+        System.out.print("Enter the vendor name to search for: ");
+        String vendorName = read.nextLine().trim();
+
+        if (vendorName.isEmpty()) {
+            System.out.println("Vendor name cannot be empty.");
+            System.out.println("--------------------------------------------------------");
+            return;
+        }
+
+        double totalAmount = 0.0;
+        boolean hasTransactions = false;
+
+        // for each ledger that matches the vendor name, print those ledgers
+        for (Ledger ledger : Ledger.ledgerList) {
+            if (ledger.getVendor().equalsIgnoreCase(vendorName)) {
+                Ledger.printLedger(ledger);
+                totalAmount += ledger.getAmount();
+                hasTransactions = true;
+            }
+        }
+
+        if (!hasTransactions) {
+            System.out.println("No transactions found for vendor: " + vendorName);
+        } else {
+            System.out.printf("Total Amount for %s: %.2f%n", vendorName, totalAmount);
+        }
+
         System.out.println("--------------------------------------------------------");
     }
 }

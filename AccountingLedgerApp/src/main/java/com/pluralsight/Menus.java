@@ -294,6 +294,7 @@ static String exitArt = """
                         loadingBar();
                         System.out.println("----------------------------");
                         // Call method to search by vendor
+                        Reports.searchByVendorReport();
                         break;
                     case 6:
                         System.out.println("Returning to ledger menu...");
