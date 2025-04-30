@@ -123,19 +123,19 @@ static String exitArt = """
                 switch (choice) {
                     case 1:
                         // Call method to handle deposit
-                        System.out.println("Making a deposit...");
+                        System.out.println("Loading deposit screen...");
                         loadingBar();
                         System.out.println("----------------------------");
                         Transactions.makeDeposit();
                         break;
                     case 2:
-                        System.out.println("Making a payment...");
+                        System.out.println("Loading payment screen...");
                         loadingBar();
                         System.out.println("----------------------------");
                         Transactions.makePayment();
                         break;
                     case 3:
-                        System.out.println("Accessing the ledger...");
+                        System.out.println("Accessing the ledger menu...");
                         loadingBar();
                         System.out.println("------------------------------------");
                         for (char c : ledgerArt.toCharArray()) {
@@ -191,9 +191,9 @@ static String exitArt = """
                 switch (choice) {
                     case 1:
                         System.out.println("Displaying all transactions...");
-                        // Call method to display all transactions
                         loadingBar();
                         System.out.println("----------------------------");
+                        // Call method to display all transactions
                         Ledger.printAllLedgers();
                         break;
                     case 2:
@@ -211,13 +211,14 @@ static String exitArt = """
                         Ledger.displayPayments();
                         break;
                     case 4:
-                        System.out.println("Viewing reports...");
+                        System.out.println("Accessing reports menu...");
                         loadingBar();
                         System.out.println("---------------------------------------");
                         for (char c : reportArt.toCharArray()) {
                             System.out.print(c);
                             Thread.sleep(1);
                         }
+                        // Call method to view reports menu
                         reportsMenu();
                         break;
                     case 5:

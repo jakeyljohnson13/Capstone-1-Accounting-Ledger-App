@@ -16,6 +16,7 @@ public class Reports {
         double totalAmount = 0.0;
         boolean hasTransactions = false;
 
+        Menus.loadingBar();
         // for each ledger that is not before the first day of the month and not after today, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (!ledger.getTransactionDate().isBefore(firstDayOfMonth) && !ledger.getTransactionDate().isAfter(today)) {
@@ -25,7 +26,7 @@ public class Reports {
             }
         }
 
-        // if theres no transactions, print a message, otherwise print the total amount
+        // if there's no transactions, print a message, otherwise print the total amount
         if (!hasTransactions) {
             System.out.println("No transactions found for the current month.");
         } else {
@@ -50,6 +51,7 @@ public class Reports {
 
         double totalAmount = 0.0;
         boolean hasTransactions = false;
+        Menus.loadingBar();
 
         // for each ledger that is not before the first day of the previous month and not after the last day of the previous month, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
@@ -79,6 +81,7 @@ public class Reports {
 
         double totalAmount = 0.0;
         boolean hasTransactions = false;
+        Menus.loadingBar();
 
         // for each ledger that is not before the first day of the year and not after today, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
@@ -111,6 +114,7 @@ public class Reports {
 
         double totalAmount = 0.0;
         boolean hasTransactions = false;
+        Menus.loadingBar();
 
         // for each ledger that is not before the first day of the previous year and not after the last day of the previous year, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
