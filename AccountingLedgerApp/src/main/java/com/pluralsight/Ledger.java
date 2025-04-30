@@ -87,8 +87,10 @@ public class Ledger {
 
     // method for writing transactions to CSV, when read they are added to the ledgerList
     public static void writeToTransactionCsv(String _vendor, String _description, double _amount) {
+
         LocalDate transactionDate = LocalDate.now();
         LocalTime transactionTime = LocalTime.now();
+
         try {
             FileWriter fileWriter = new FileWriter("transaction.csv" , true);
             BufferedWriter writer = new BufferedWriter(fileWriter);
@@ -103,6 +105,7 @@ public class Ledger {
             // format time and date
             String formattedDate = transactionDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             String formattedTime = transactionTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+
             // Write the transaction details
             writer.append(formattedDate).append("|").append(formattedTime).append("|").append(_description).append("|").append(_vendor).append("|").append(String.valueOf(_amount)).append("\n");
             writer.close();

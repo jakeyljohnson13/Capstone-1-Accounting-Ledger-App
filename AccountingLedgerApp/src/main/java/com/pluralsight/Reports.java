@@ -10,7 +10,7 @@ public class Reports {
 
         // Get the current date
         LocalDate today = LocalDate.now();
-        // Get the first day of the current month
+        // Get the first day of the current month by setting the day of the month to 1
         LocalDate firstDayOfMonth = today.withDayOfMonth(1);
 
         double totalAmount = 0.0;
@@ -44,9 +44,9 @@ public class Reports {
         LocalDate today = LocalDate.now();
 
         LocalDate firstDayOfCurrentMonth = today.withDayOfMonth(1);
-        // Get the first day of the previous month
+        // Get the first day of the previous month by subtracting one month from the first day of the current month
         LocalDate firstDayOfPreviousMonth = firstDayOfCurrentMonth.minusMonths(1);
-        // Get the last day of the previous month
+        // Get the last day of the previous month by subtracting one day from the first day of the current month
         LocalDate lastDayOfPreviousMonth = firstDayOfCurrentMonth.minusDays(1);
 
         double totalAmount = 0.0;
@@ -76,7 +76,7 @@ public class Reports {
         System.out.println("--------------------------------------------------------");
 
         LocalDate today = LocalDate.now();
-        // Get the first day of the current year
+        // Get the first day of the current year by setting the day of the year to 1
         LocalDate firstDayOfYear = today.withDayOfYear(1);
 
         double totalAmount = 0.0;
@@ -107,9 +107,9 @@ public class Reports {
 
         LocalDate today = LocalDate.now();
         LocalDate firstDayOfCurrentYear = today.withDayOfYear(1);
-        // Get the first day of the previous year
+        // Get the first day of the previous year by subtracting one year from the first day of the current year
         LocalDate firstDayOfPreviousYear = firstDayOfCurrentYear.minusYears(1);
-        // Get the last day of the previous year
+        // Get the last day of the previous year by subtracting one day from the first day of the current year
         LocalDate lastDayOfPreviousYear = firstDayOfCurrentYear.minusDays(1);
 
         double totalAmount = 0.0;

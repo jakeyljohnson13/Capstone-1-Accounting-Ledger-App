@@ -256,7 +256,7 @@ static String exitArt = """
             try {
                 choice = Integer.parseInt(choiceStr);
                 if (choice < 1 || choice > 6) {
-                    System.out.println("Invalid choice. Please enter a number between 1 and 5.");
+                    System.out.println("Invalid choice. Please enter a number between 1 and 6.");
                     continue;
                 }
 
