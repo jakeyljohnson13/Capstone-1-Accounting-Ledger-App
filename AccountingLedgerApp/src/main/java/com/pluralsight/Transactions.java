@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Transactions {
     static Scanner read = new Scanner(System.in);
 
-    public static void makeDeposit() throws InterruptedException {
+    public static void makeDeposit() {
         double amount = 0;
         String description = "";
         String vendor = "";
@@ -58,7 +58,7 @@ public class Transactions {
 
     }
 
-    public static void makePayment() throws InterruptedException {
+    public static void makePayment() {
         double amount = 0;
         String description = "";
         String vendor = "";

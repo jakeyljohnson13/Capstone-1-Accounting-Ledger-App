@@ -34,6 +34,7 @@ public class Reports {
         System.out.println("--------------------------------------------------------");
     }
 
+
     public static void previousMonthTransactionReport() {
         System.out.println("Previous Month Transaction Report");
         System.out.println("--------------------------------------------------------");
@@ -67,6 +68,7 @@ public class Reports {
         System.out.println("--------------------------------------------------------");
     }
 
+
     public static void yearToDateTransactionReport() {
         System.out.println("Year-to-Date Transaction Report");
         System.out.println("--------------------------------------------------------");
@@ -89,6 +91,38 @@ public class Reports {
 
         if (!hasTransactions) {
             System.out.println("No transactions found for the current year.");
+        } else {
+            System.out.printf("Total Amount: %.2f%n", totalAmount);
+        }
+        System.out.println("--------------------------------------------------------");
+    }
+
+
+    public static void previousYearTransactionReport() {
+        System.out.println("Previous Year Transaction Report");
+        System.out.println("--------------------------------------------------------");
+
+        LocalDate today = LocalDate.now();
+        LocalDate firstDayOfCurrentYear = today.withDayOfYear(1);
+        // Get the first day of the previous year
+        LocalDate firstDayOfPreviousYear = firstDayOfCurrentYear.minusYears(1);
+        // Get the last day of the previous year
+        LocalDate lastDayOfPreviousYear = firstDayOfCurrentYear.minusDays(1);
+
+        double totalAmount = 0.0;
+        boolean hasTransactions = false;
+
+        // for each ledger that is not before the first day of the previous year and not after the last day of the previous year, print those ledgers
+        for (Ledger ledger : Ledger.ledgerList) {
+            if (!ledger.getTransactionDate().isBefore(firstDayOfPreviousYear) && !ledger.getTransactionDate().isAfter(lastDayOfPreviousYear)) {
+                Ledger.printLedger(ledger);
+                totalAmount += ledger.getAmount();
+                hasTransactions = true;
+            }
+        }
+
+        if (!hasTransactions) {
+            System.out.println("No transactions found for the previous year.");
         } else {
             System.out.printf("Total Amount: %.2f%n", totalAmount);
         }
