@@ -33,7 +33,6 @@ public class Ledger {
     public String getDescription() {return description;}
     public String getVendor() {return vendor;}
     public double getAmount() {return amount;}
-    public static List<Ledger> getLedgerList() {return ledgerList;}
 
     public void setTransactionDate(LocalDate transactionDate) {this.transactionDate = transactionDate;}
     public void setTransactionTime(LocalTime transactionTime) {this.transactionTime = transactionTime;}
@@ -66,6 +65,7 @@ public class Ledger {
             BufferedReader bufReader = new BufferedReader(fileReader);
             String line;
             bufReader.readLine();
+
             while ((line = bufReader.readLine()) != null) {
                 String[] column = line.split("\\|");
                 if(column.length == 5) {
@@ -81,6 +81,7 @@ public class Ledger {
                 }
             }
             bufReader.close();
+
         } catch (FileNotFoundException e) {
             System.out.println("Error reading transactions from CSV: " + e.getMessage());
         } catch (IOException e) {
@@ -96,19 +97,23 @@ public class Ledger {
             FileWriter fileWriter = new FileWriter("transaction.csv" , true);
             BufferedWriter writer = new BufferedWriter(fileWriter);
             File file = new File("transaction.csv");
+
             // Check if the file is empty
             if (!file.exists() || file.length() == 0) {
                 // Write the header if the file is empty
                 writer.write("Date|Time|Description|Vendor|Amount\n");
             }
-            // Write the transaction details
+
+            // format time and date
             String formattedDate = transactionDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             String formattedTime = transactionTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+            // Write the transaction details
             writer.append(formattedDate).append("|").append(formattedTime).append("|").append(_description).append("|").append(_vendor).append("|").append(String.valueOf(_amount)).append("\n");
             writer.close();
 
+            // confirmation message that the transaction was written to the CSV
             if (_amount > 0) {
-                System.out.println("Deposit of $" + _amount + " made to " + _vendor + " with description: " + _description);
+                System.out.println("Deposit of $" + _amount + " made by " + _vendor + " with description: " + _description);
             } else {
                 System.out.println("Payment of $" + Math.abs(_amount) + " made to " + _vendor + " with description: " + _description);
             }
