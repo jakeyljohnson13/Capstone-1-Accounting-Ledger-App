@@ -234,8 +234,9 @@ static String exitArt = """
                 case 1:
                     System.out.println("Sorting by month to date...");
                     loadingBar();
-                    System.out.println("----------------------------");
+                    System.out.println("-----------------------------");
                     // Call method to sort by month to date
+                    Reports.monthToDateTransactionReport();
                     break;
                 case 2:
                     System.out.println("Sorting by previous month...");

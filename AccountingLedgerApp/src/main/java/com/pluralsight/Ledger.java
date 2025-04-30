@@ -16,10 +16,6 @@ public class Ledger {
     static List<Ledger> ledgerList = new ArrayList<>();
 
 
-    public Ledger() {
-
-    }
-
     public Ledger(LocalDate _transactionDate, LocalTime _transactionTime, String _description, String _vendor, double _amount) {
         this.transactionDate = _transactionDate;
         this.transactionTime = _transactionTime;
