@@ -29,7 +29,6 @@ public class Reports {
         } else {
             System.out.printf("Total Amount: %.2f%n", totalAmount);
         }
-
         System.out.println("--------------------------------------------------------");
     }
 
@@ -62,7 +61,33 @@ public class Reports {
         } else {
             System.out.printf("Total Amount: %.2f%n", totalAmount);
         }
+        System.out.println("--------------------------------------------------------");
+    }
 
+    public static void yearToDateTransactionReport() {
+        System.out.println("Year-to-Date Transaction Report");
+        System.out.println("--------------------------------------------------------");
+
+        LocalDate today = LocalDate.now();
+        // Get the first day of the current year
+        LocalDate firstDayOfYear = today.withDayOfYear(1);
+
+        double totalAmount = 0.0;
+        boolean hasTransactions = false;
+
+        for (Ledger ledger : Ledger.ledgerList) {
+            if (!ledger.getTransactionDate().isBefore(firstDayOfYear) && !ledger.getTransactionDate().isAfter(today)) {
+                Ledger.printLedger(ledger);
+                totalAmount += ledger.getAmount();
+                hasTransactions = true;
+            }
+        }
+
+        if (!hasTransactions) {
+            System.out.println("No transactions found for the current year.");
+        } else {
+            System.out.printf("Total Amount: %.2f%n", totalAmount);
+        }
         System.out.println("--------------------------------------------------------");
     }
 }

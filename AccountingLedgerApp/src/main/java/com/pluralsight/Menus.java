@@ -193,7 +193,7 @@ static String exitArt = """
                case 4:
                    System.out.println("Viewing reports...");
                    loadingBar();
-                   System.out.println("--------------------------------------");
+                   System.out.println("---------------------------------------");
                    for (char c : reportArt.toCharArray()) {
                        System.out.print(c);
                        Thread.sleep(1);
@@ -243,12 +243,14 @@ static String exitArt = """
                     loadingBar();
                     System.out.println("----------------------------");
                     // Call method to sort by previous month
+                    Reports.previousMonthTransactionReport();
                     break;
                 case 3:
                     System.out.println("Sorting by year to date...");
                     loadingBar();
                     System.out.println("----------------------------");
                     // Call method to sort by year to date
+                    Reports.yearToDateTransactionReport();
                     break;
                 case 4:
                     System.out.println("Sorting by previous year...");
