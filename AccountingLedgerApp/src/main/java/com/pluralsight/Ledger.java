@@ -8,13 +8,13 @@ import java.util.List;
 
 
 public class Ledger {
+
     private LocalDate transactionDate;
     private LocalTime transactionTime ;
     private String description;
     private String vendor;
     private double amount;
     static List<Ledger> ledgerList = new ArrayList<>();
-
 
     public Ledger(LocalDate _transactionDate, LocalTime _transactionTime, String _description, String _vendor, double _amount) {
         this.transactionDate = _transactionDate;

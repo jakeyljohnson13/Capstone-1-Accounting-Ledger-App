@@ -16,6 +16,7 @@ public class Reports {
         double totalAmount = 0.0;
         boolean hasTransactions = false;
 
+        // for each ledger that is not before the first day of the month and not after today, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (!ledger.getTransactionDate().isBefore(firstDayOfMonth) && !ledger.getTransactionDate().isAfter(today)) {
                 Ledger.printLedger(ledger);
@@ -24,6 +25,7 @@ public class Reports {
             }
         }
 
+        // if theres no transactions, print a message, otherwise print the total amount
         if (!hasTransactions) {
             System.out.println("No transactions found for the current month.");
         } else {
@@ -36,9 +38,9 @@ public class Reports {
         System.out.println("Previous Month Transaction Report");
         System.out.println("--------------------------------------------------------");
 
-        // Get the current date
+
         LocalDate today = LocalDate.now();
-        // Get the first day of the current month
+
         LocalDate firstDayOfCurrentMonth = today.withDayOfMonth(1);
         // Get the first day of the previous month
         LocalDate firstDayOfPreviousMonth = firstDayOfCurrentMonth.minusMonths(1);
@@ -48,6 +50,7 @@ public class Reports {
         double totalAmount = 0.0;
         boolean hasTransactions = false;
 
+        // for each ledger that is not before the first day of the previous month and not after the last day of the previous month, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (!ledger.getTransactionDate().isBefore(firstDayOfPreviousMonth) && !ledger.getTransactionDate().isAfter(lastDayOfPreviousMonth)) {
                 Ledger.printLedger(ledger);
@@ -75,6 +78,7 @@ public class Reports {
         double totalAmount = 0.0;
         boolean hasTransactions = false;
 
+        // for each ledger that is not before the first day of the year and not after today, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (!ledger.getTransactionDate().isBefore(firstDayOfYear) && !ledger.getTransactionDate().isAfter(today)) {
                 Ledger.printLedger(ledger);

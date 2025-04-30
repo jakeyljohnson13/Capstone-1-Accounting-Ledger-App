@@ -154,8 +154,9 @@ static String exitArt = """
     }
 
     public static void ledgerMenu() throws InterruptedException {
-        // Placeholder for ledger menu functionality
+
            Ledger.readFromTransactionCsv();
+
        while(true) {
 
            System.out.println("\n------Ledger Menu------");
