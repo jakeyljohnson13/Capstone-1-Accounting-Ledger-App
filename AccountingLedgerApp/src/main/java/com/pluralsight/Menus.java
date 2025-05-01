@@ -158,8 +158,6 @@ static String exitArt = """
             } catch (NumberFormatException | InterruptedException e) {
                 System.out.println("Invalid input. Please enter a number (1-4).");
             }
-
-
         }
 
     }
@@ -318,7 +316,7 @@ static String exitArt = """
     public static void loadingBar() {
         try {
             for (int i = 0; i <= 100; i += 20) {
-                System.out.print("\rLoading: [" + "=".repeat(i / 10) + "] " + i + "%");
+                System.out.print("\rLoading: [" + "=".repeat(i / 5) + "] " + i + "%");
                 TimeUnit.MILLISECONDS.sleep(100);
             }
             System.out.println("\n");
