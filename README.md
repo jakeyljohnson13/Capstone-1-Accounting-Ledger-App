@@ -60,7 +60,8 @@ for (char c : art.toCharArray()) {
 ```
 <img src ="./img/ascii gif.gif">
 
-For loop that adds equal signs to the loading bar up to 10 times by when int i reaches 100:
+For loop that adds equal signs to the loading bar up by however many times i's full value(100) is divisible by the specified amount(100 / 10 = 10, 10 equals signs).\r moves the cursor to print on the same line horizontally as opposed to moving to a new line. 
+
 ``` java
 public static void loadingBar() throws InterruptedException {
         for (int i = 0; i <= 100; i+=20) {
