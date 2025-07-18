@@ -1,5 +1,6 @@
 package com.pluralsight.services;
 
+
 import com.pluralsight.CustomSearch;
 import com.pluralsight.LoginService;
 import com.pluralsight.models.Reports;
@@ -115,7 +116,7 @@ static Scanner read = new Scanner(System.in);
 
     public static void ledgerMenu() {
 
-        Ledger.readFromTransactionCsv();
+        Ledger.readFromTransactionCsv(); // Load transactions from CSV at the start of the ledger menu
 
         while (true) {
             System.out.println("\n------Ledger Menu------");

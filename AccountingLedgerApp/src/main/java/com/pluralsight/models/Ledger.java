@@ -38,9 +38,6 @@ public class Ledger {
     public void setAmount(double amount) {this.amount = amount;}
 
 
-
-
-
     // method for reading transactions from CSV and adding them to the ledgerList
     public static void readFromTransactionCsv() {
         try {
