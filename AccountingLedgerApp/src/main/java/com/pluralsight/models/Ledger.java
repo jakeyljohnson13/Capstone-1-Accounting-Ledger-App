@@ -36,23 +36,9 @@ public class Ledger {
     public void setVendor(String vendor) {this.vendor = vendor;}
     public void setAmount(double amount) {this.amount = amount;}
 
-    public static void printLedger(Ledger _ledger) {
-        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-        System.out.println(_ledger.getTransactionDate().format(dateFormatter) + "|" + _ledger.getTransactionTime().format(timeFormatter) + "|" + _ledger.getDescription() + "|" + _ledger.getVendor() + "|" + _ledger.getAmount());
-    }
 
-    public static void printAllLedgers() {
-        if (ledgerList.isEmpty()) {
-            System.out.println("No transactions found.");
-            return;
-        }
-        for (Ledger ledger : ledgerList) {
-            printLedger(ledger);
-            System.out.println("--------------------------------------------------------");
-        }
-    }
+
 
     // method for reading transactions from CSV and adding them to the ledgerList
     public static void readFromTransactionCsv() {
@@ -121,33 +107,7 @@ public class Ledger {
         }
     }
 
-    public static void displayDeposits() {
-        boolean hasDeposits = false;
-        for (Ledger ledger : ledgerList) {
-            if (ledger.getAmount() > 0) {
-                printLedger(ledger);
-                System.out.println("--------------------------------------------------------");
-                hasDeposits = true;
-            }
-        }
-        if (!hasDeposits) {
-            System.out.println("No deposits found.");
-        }
-    }
-
-    public static void displayPayments() {
-        boolean hasPayments = false;
-        for (Ledger ledger : ledgerList) {
-            if (ledger.getAmount() < 0) {
-                printLedger(ledger);
-                System.out.println("--------------------------------------------------------");
-                hasPayments = true;
-            }
-        }
-        if (!hasPayments) {
-            System.out.println("No payments found.");
-        }
 
 
-    }
+
 }
