@@ -1,79 +1,17 @@
 package com.pluralsight.services;
 
+import com.pluralsight.CustomSearch;
 import com.pluralsight.models.Reports;
 import com.pluralsight.data.Transactions;
 import com.pluralsight.models.Ledger;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+import static com.pluralsight.models.AsciiArt.*;
 
 public class Menus {
 
 static Scanner read = new Scanner(System.in);
-
-static String art = """
-        ╔───────────────────────────────────────────╗
-        │     _    ____ ____                        │
-        │    / \\  / ___/ ___|                       │
-        │   / _ \\| |  | |  _                        │
-        │  / ___ \\ |__| |_| |                       │
-        │ /_/__ \\_\\____\\____| _  _____ _   _  ____  │
-        │ | __ )  / \\  | \\ | | |/ /_ _| \\ | |/ ___| │
-        │ |  _ \\ / _ \\ |  \\| | ' / | ||  \\| | |  _  │
-        │ | |_) / ___ \\| |\\  | . \\ | || |\\  | |_| | │
-        │ |____/_/   \\_\\_| \\_|_|\\_\\___|_| \\_|\\____| │
-        ╚───────────────────────────────────────────╝
-        """;
-
-static String ledgerArt = """
-                ╔──────────────────────────────────╗
-                │ _              _                 │
-                │| |            | |                │
-                │| |     ___  __| | __ _  ___ _ __ │
-                │| |    / _ \\/ _` |/ _` |/ _ \\ '__|│
-                │| |___|  __/ (_| | (_| |  __/ |   │
-                │|______\\___|\\__,_|\\__, |\\___|_|   │
-                │                   __/ |          │
-                │                  |___/           │
-                ╚──────────────────────────────────╝
-                """;
-
-static String reportArt = """
-                ╔─────────────────────────────────────╗
-                │ _____                       _       │
-                │|  __ \\                     | |      │
-                │| |__) |___ _ __   ___  _ __| |_ ___ │
-                │|  _  // _ \\ '_ \\ / _ \\| '__| __/ __|│
-                │| | \\ \\  __/ |_) | (_) | |  | |_\\__ \\│
-                │|_|  \\_\\___| .__/ \\___/|_|   \\__|___/│
-                │           | |                       │
-                │           |_|                       │
-                ╚─────────────────────────────────────╝
-                """;
-static String menuArt = """
-        ╔────────────────────────────────────────────────╗
-        │ __  __       _         __  __                  │
-        │|  \\/  |     (_)       |  \\/  |                 │
-        │| \\  / | __ _ _ _ __   | \\  / | ___ _ __  _   _ │
-        │| |\\/| |/ _` | | '_ \\  | |\\/| |/ _ \\ '_ \\| | | |│
-        │| |  | | (_| | | | | | | |  | |  __/ | | | |_| |│
-        │|_|  |_|\\__,_|_|_| |_| |_|  |_|\\___|_| |_|\\__,_|│
-        ╚────────────────────────────────────────────────╝
-        """;
-static String exitArt = """
-        ╔─────────────────────────────────────────────╗
-        │  _____                 _ _                _ │
-        │ / ____|               | | |              | |│
-        │| |  __  ___   ___   __| | |__  _   _  ___| |│
-        │| | |_ |/ _ \\ / _ \\ / _` | '_ \\| | | |/ _ \\ |│
-        │| |__| | (_) | (_) | (_| | |_) | |_| |  __/_|│
-        │ \\_____|\\___/ \\___/ \\__,_|_.__/ \\__, |\\___(_)│
-        │                                 __/ |       │
-        │                                |___/        │
-        ╚─────────────────────────────────────────────╝
-        """;
-
-
 
     public static void startMenu() {
         System.out.println("Welcome to the ACG Banking System!");
@@ -249,7 +187,8 @@ static String exitArt = """
             System.out.println("3 | Sort by Year to Date");
             System.out.println("4 | Sort by Previous Year");
             System.out.println("5 | Search by Vendor");
-            System.out.println("6 | Return to Ledger Menu");
+            System.out.println("6 | Custom Search");
+            System.out.println("7 | Return to Ledger Menu");
             System.out.print("> ");
 
             String choiceStr = read.nextLine().trim();
@@ -257,8 +196,8 @@ static String exitArt = """
 
             try {
                 choice = Integer.parseInt(choiceStr);
-                if (choice < 1 || choice > 6) {
-                    System.out.println("Invalid choice. Please enter a number between 1 and 6.");
+                if (choice < 1 || choice > 7) {
+                    System.out.println("Invalid choice. Please enter a number between 1 and 7.");
                     continue;
                 }
 
@@ -267,54 +206,54 @@ static String exitArt = """
                         System.out.println("Sorting by month to date...");
                         loadingBar();
                         System.out.println("-----------------------------");
-                        // Call method to sort by month to date
                         Reports.monthToDateTransactionReport();
                         break;
                     case 2:
                         System.out.println("Sorting by previous month...");
                         loadingBar();
                         System.out.println("----------------------------");
-                        // Call method to sort by previous month
                         Reports.previousMonthTransactionReport();
                         break;
                     case 3:
                         System.out.println("Sorting by year to date...");
                         loadingBar();
                         System.out.println("----------------------------");
-                        // Call method to sort by year to date
                         Reports.yearToDateTransactionReport();
                         break;
                     case 4:
                         System.out.println("Sorting by previous year...");
                         loadingBar();
                         System.out.println("----------------------------");
-                        // Call method to sort by previous year
                         Reports.previousYearTransactionReport();
                         break;
                     case 5:
                         System.out.println("Searching by vendor...");
                         loadingBar();
                         System.out.println("----------------------------");
-                        // Call method to search by vendor
                         Reports.searchByVendorReport();
                         break;
                     case 6:
+                        System.out.println("Starting custom search...");
+                        loadingBar();
+                        System.out.println("----------------------------");
+                        CustomSearch.search(Ledger.getLedgerList());
+                        break;
+                    case 7:
                         System.out.println("Returning to ledger menu...");
                         loadingBar();
                         System.out.println("--------------------------------------");
                         for (char c : ledgerArt.toCharArray()) {
                             System.out.print(c);
-                            Thread.sleep(1); // Adjust the delay (milliseconds) to control speed
+                            Thread.sleep(1);
                         }
                         return;
                 }
             } catch (NumberFormatException | InterruptedException e) {
-                System.out.println("Invalid input. Please enter a number (1-6).");
+                System.out.println("Invalid input. Please enter a number (1-7).");
             }
-
         }
-
     }
+
 
 
     public static void loadingBar() {
