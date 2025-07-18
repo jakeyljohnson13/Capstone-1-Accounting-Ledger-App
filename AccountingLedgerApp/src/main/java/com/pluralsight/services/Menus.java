@@ -1,18 +1,28 @@
 package com.pluralsight.services;
 
+
+import com.pluralsight.CustomSearch;
+import com.pluralsight.LoginService;
 import com.pluralsight.models.Reports;
 import com.pluralsight.data.Transactions;
 import com.pluralsight.models.Ledger;
+import com.pluralsight.models.User;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import static com.pluralsight.models.AsciiArt.*;
+
 
 public class Menus {
 
 static Scanner read = new Scanner(System.in);
 
     public static void startMenu() {
+
+        LoginService ls = new LoginService();
+        ls.login(read);
+
+
         System.out.println("Welcome to the ACG Banking System!");
         System.out.println("Enter 1 to start the program");
         System.out.println("Enter any other key to exit the program");
