@@ -1,6 +1,5 @@
 package com.pluralsight.services;
 
-import com.pluralsight.CustomSearch;
 import com.pluralsight.models.Reports;
 import com.pluralsight.data.Transactions;
 import com.pluralsight.models.Ledger;

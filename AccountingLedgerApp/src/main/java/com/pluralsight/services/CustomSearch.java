@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.services;
 
 import com.pluralsight.models.Ledger;
 
