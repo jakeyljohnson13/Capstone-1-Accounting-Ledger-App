@@ -1,4 +1,8 @@
-package com.pluralsight;
+package com.pluralsight.services;
+
+import com.pluralsight.models.Reports;
+import com.pluralsight.data.Transactions;
+import com.pluralsight.models.Ledger;
 
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;

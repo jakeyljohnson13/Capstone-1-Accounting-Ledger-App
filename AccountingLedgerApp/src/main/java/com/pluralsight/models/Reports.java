@@ -1,4 +1,4 @@
-package com.pluralsight;
+package com.pluralsight.models;
 
 import java.time.LocalDate;
 import java.util.Scanner;
