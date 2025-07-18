@@ -14,7 +14,7 @@ public class Ledger {
     private String description;
     private String vendor;
     private double amount;
-    static List<Ledger> ledgerList = new ArrayList<>();
+    public static List<Ledger> ledgerList = new ArrayList<>();
 
     public Ledger(LocalDate _transactionDate, LocalTime _transactionTime, String _description, String _vendor, double _amount) {
         this.transactionDate = _transactionDate;

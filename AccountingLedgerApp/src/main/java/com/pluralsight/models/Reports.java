@@ -1,5 +1,7 @@
 package com.pluralsight.models;
 
+import com.pluralsight.services.LedgerService;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 
