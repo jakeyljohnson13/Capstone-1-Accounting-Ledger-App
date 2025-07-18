@@ -192,21 +192,21 @@ static String exitArt = """
                         loadingBar();
                         System.out.println("----------------------------");
                         // Call method to display all transactions
-                        Ledger.printAllLedgers();
+                        LedgerService.printAllLedgers();
                         break;
                     case 2:
                         System.out.println("Showing deposits...");
                         loadingBar();
                         System.out.println("----------------------------");
                         // Call method to show deposits
-                        Ledger.displayDeposits();
+                        LedgerService.displayDeposits();
                         break;
                     case 3:
                         System.out.println("Showing payments...");
                         loadingBar();
                         System.out.println("----------------------------");
                         // Call method to show payments
-                        Ledger.displayPayments();
+                        LedgerService.displayPayments();
                         break;
                     case 4:
                         System.out.println("Accessing reports menu...");

@@ -20,7 +20,7 @@ public class Reports {
         // for each ledger that is not before the first day of the month and not after today, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (!ledger.getTransactionDate().isBefore(firstDayOfMonth) && !ledger.getTransactionDate().isAfter(today)) {
-                Ledger.printLedger(ledger);
+                LedgerService.printLedger(ledger);
                 totalAmount += ledger.getAmount();
                 hasTransactions = true;
             }
@@ -55,7 +55,7 @@ public class Reports {
         // for each ledger that is not before the first day of the previous month and not after the last day of the previous month, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (!ledger.getTransactionDate().isBefore(firstDayOfPreviousMonth) && !ledger.getTransactionDate().isAfter(lastDayOfPreviousMonth)) {
-                Ledger.printLedger(ledger);
+                LedgerService.printLedger(ledger);
                 totalAmount += ledger.getAmount();
                 hasTransactions = true;
             }
@@ -84,7 +84,7 @@ public class Reports {
         // for each ledger that is not before the first day of the year and not after today, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (!ledger.getTransactionDate().isBefore(firstDayOfYear) && !ledger.getTransactionDate().isAfter(today)) {
-                Ledger.printLedger(ledger);
+                LedgerService.printLedger(ledger);
                 totalAmount += ledger.getAmount();
                 hasTransactions = true;
             }
@@ -116,7 +116,7 @@ public class Reports {
         // for each ledger that is not before the first day of the previous year and not after the last day of the previous year, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (!ledger.getTransactionDate().isBefore(firstDayOfPreviousYear) && !ledger.getTransactionDate().isAfter(lastDayOfPreviousYear)) {
-                Ledger.printLedger(ledger);
+                LedgerService.printLedger(ledger);
                 totalAmount += ledger.getAmount();
                 hasTransactions = true;
             }
@@ -151,7 +151,7 @@ public class Reports {
         // for each ledger that matches the vendor name, print those ledgers
         for (Ledger ledger : Ledger.ledgerList) {
             if (ledger.getVendor().equalsIgnoreCase(vendorName)) {
-                Ledger.printLedger(ledger);
+                LedgerService.printLedger(ledger);
                 totalAmount += ledger.getAmount();
                 hasTransactions = true;
             }
